@@ -85,3 +85,6 @@ p {
   text-align: center;
   line-height: 1.6;
 }
+.orange {
+  background-color: var(--orange);
+}

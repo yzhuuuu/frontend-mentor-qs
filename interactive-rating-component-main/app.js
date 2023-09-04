@@ -28,44 +28,31 @@ window.addEventListener('load', () => {
 function getAllButtons() {
   const buttons = document.querySelectorAll('.ratings button');
   //   console.log(buttons);
+  const submitBtn = document.querySelector('.btn');
+  let rating;
   buttons.forEach((btn) => {
     btn.addEventListener('click', (e) => {
-      console.log(e.currentTarget.value);
-      document.body.innerHTML = `
-        
-      <main class="container align-center">
-      <article>
-        <img src="./images/illustration-thank-you.svg" alt="star" />
-      </article>
-      <h5 class="rates">You Selected ${e.currentTarget.value} out of 5</h5>
-      <h2>Thank You</h2>
-      <p>
-        we appreciate you taking the time to give a rating, if you ever need
-        more support, don't hesitate to get in touch!
-      </p>
-    </main> 
-      
-      `;
+      removeOrangeBg(buttons);
+      btn.classList.add('orange');
+      rating = btn.value;
     });
   });
+
+  submitBtn.addEventListener('click', () => {
+    document.body.innerHTML = `
+       <main class="container align-center">
+       <article>
+         <img src="./images/illustration-thank-you.svg" alt="star" />
+         </article>
+         <h5 class="rates">You Selected ${rating} out of 5</h5>
+        <h2>Thank You</h2>
+       <p>
+         we appreciate you taking the time to give a rating, if you ever need
+           more support, don't hesitate to get in touch!
+       </p>
+     </main>`;
+  });
 }
-/**
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- */
+function removeOrangeBg(btns) {
+  btns.forEach((btn) => btn.classList.remove('orange'));
+}
